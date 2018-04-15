@@ -1,18 +1,28 @@
 #include <iostream>
 #include "list.h"
 
+
+// List node
+//
 struct list_node {
   int *slice;
   list_node *next;
 };
 
 
+// List constructor
+//
 list::list() {
   head = NULL;
   tail = NULL;
   this->length = 0;
 }
 
+
+// Push element to the list
+//   slice - an array allocated
+//           with new int[]
+//
 void list::push(int *slice) {
   list_node* temp = new list_node;
   temp->slice = slice;
@@ -29,6 +39,9 @@ void list::push(int *slice) {
   this->length++;
 }
 
+
+// Delete last element from the list
+//
 void list::pop() {
   if (!head) return;
 
@@ -45,6 +58,9 @@ void list::pop() {
   this->length--;
 }
 
+
+// Clear list
+//
 void list::clear() {
   list_node *temp;
   temp = head;
@@ -52,13 +68,19 @@ void list::clear() {
   while (head) {
     temp = head;
     head = head->next;
+    delete temp->slice;
     delete temp;
   }
 
   this->length = 0;
 }
 
-int *list::get(int slice_number) {
+
+// Get slice by its number in list
+//   slice_number - number of slice
+//                  in the list
+//
+int *list::get(int slice_number) const {
   list_node *temp = head;
 
   for (int i = 0; i < slice_number; ++i) {

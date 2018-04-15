@@ -12,7 +12,7 @@ public:
   void push(int *);
   void pop();
   void clear();
-  int *get(int);
+  int *get(int) const;
 };
 
 #endif
