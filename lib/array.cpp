@@ -41,7 +41,7 @@ void Array::set(int index, int value) {
 //
 int Array::get(int index) const {
   int slice_number = floor(index / range);
-  int index_in_slice = index - slice_number;
+  int index_in_slice = index - slice_number * range;
 
   if (index + 1 > this->length) {
     std::cout << "Index is out of bounds" << std::endl;
