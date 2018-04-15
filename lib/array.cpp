@@ -94,6 +94,23 @@ Array Array::map(int (*fn)(int)) {
 }
 
 
+// Project array into new one
+// filtering by the function
+//   fn - function which returns
+//        true or false
+//
+Array Array::filter(bool (*fn)(int)) {
+  Array filtered (this->length);
+
+  for (int i = 0; i < this->length; ++i) {
+    int item = this->get(i);
+    int value = fn(item);
+    if (value) filtered.push(item);
+  }
+
+  return filtered;
+}
+
 // Create string from elements of array
 // separated by specified separator
 //

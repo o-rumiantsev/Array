@@ -6,21 +6,15 @@ using namespace std;
 int main() {
   Array a (10);
 
-  a.set(0, 1);
-  a.set(1, 2);
-  a.set(2, 3);
-  a.set(3, 4);
-  a.set(4, 5);
-  a.set(9, 10);
-  a.set(10, 11);
+  a.push(1);
+  a.push(2);
+  a.push(3);
+  a.push(4);
 
-  a.push(12);
-  cout << a.join(", ") << endl;
-
-  Array b = a.map([](int item) { return item * 2; });
-
-  cout << a.join(", ") << endl;
-  cout << b.join(", ") << endl;
+  Array b = a.map([](int item) { return item * 3; });
+  Array c = a.filter([](int item) { return item % 2 == 0; });
 
   cout << a << endl;
+  cout << b << endl;
+  cout << c << endl;
 }

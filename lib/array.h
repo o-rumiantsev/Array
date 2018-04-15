@@ -19,6 +19,7 @@ public:
   void push(int);
   int pop();
   Array map(int (*)(int));
+  Array filter(bool (*)(int));
   std::string join(const char*) const;
   std::string to_string() const;
 
