@@ -6,7 +6,7 @@
 template<typename T>
 struct node {
   T *slice;
-  node *next;
+  node<T> *next;
 };
 
 template<typename T>
@@ -32,7 +32,7 @@ public:
   //           with new T[]
   //
   void push(T *slice) {
-    node<T> *temp;
+    node<T> *temp = new node<T>;
     temp->slice = slice;
     temp->next = NULL;
 
@@ -53,7 +53,7 @@ public:
   void pop() {
     if (!head) return;
 
-    node<T> temp = head;
+    node<T> *temp = head;
 
     while (temp->next->next != tail) temp = temp->next;
 
@@ -70,7 +70,7 @@ public:
   // Clear list
   //
   void clear() {
-    node<T> temp;
+    node<T> *temp = new node<T>;
     temp = head;
 
     while (head) {
@@ -89,7 +89,7 @@ public:
   //                  in the list
   //
   T *get(int slice_number) const {
-    node<T> temp = head;
+    node<T> *temp = head;
 
     for (int i = 0; i < slice_number; ++i) {
       temp = temp->next;
